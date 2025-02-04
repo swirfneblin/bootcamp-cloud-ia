@@ -13,3 +13,9 @@ variable "git_repo" {
   description = "Repositório contendo os recursos Terraform"
   type        = string
 }
+
+variable "branch" {
+  description = "Branch do repositório Git"
+  type        = string
+  default     = "main"
+}
