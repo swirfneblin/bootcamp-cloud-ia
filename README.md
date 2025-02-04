@@ -5,6 +5,7 @@ Creation of a multicloud environment, setup, and deployment applying the DevOps 
 1. Execution
 
 ```
+GIT_REPO_URL=
 terraform init
 terraform apply -var="my_ip=$(curl -s ifconfig.me)" -var="git_repo=GIT_REPO_URL"
 ```
