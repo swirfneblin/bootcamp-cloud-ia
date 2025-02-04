@@ -17,5 +17,5 @@ variable "git_repo" {
 variable "branch" {
   description = "Branch do repositório Git"
   type        = string
-  default     = "main"
+  default     = "develop"
 }
