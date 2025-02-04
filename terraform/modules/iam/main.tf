@@ -17,12 +17,12 @@ resource "aws_iam_role" "ec2_admin" {
 EOF
 }
 
-resource "aws_iam_policy_attachment" "admin_access" {
-  name       = "admin_access_attachment"
-  roles      = [aws_iam_role.ec2_admin.name]
+resource "aws_iam_role_policy_attachment" "admin_access" {
+  role       = aws_iam_role.ec2_admin.name
   policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
 }
 
-output "role_arn" {
-  value = aws_iam_role.ec2_admin.arn
+resource "aws_iam_instance_profile" "ec2_profile" {
+  name = "ec2_profile"
+  role = aws_iam_role.ec2_admin.name
 }

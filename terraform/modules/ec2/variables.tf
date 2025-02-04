@@ -1,9 +1,10 @@
 variable "my_ip" {
   description = "IP público para acesso SSH"
   type        = string
+  default = "0.0.0.0"
 }
 
-variable "git_repo" {
-  description = "Repositório contendo os recursos Terraform"
+variable "iam_instance_profile" {
+  description = "Instance Profile para EC2"
   type        = string
 }

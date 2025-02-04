@@ -1,0 +1,20 @@
+# Diretórios e arquivos gerados pelo Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# Arquivos de variáveis sensíveis
+*.tfvars
+*.tfvars.json
+!example.tfvars  # Permite manter um arquivo de exemplo
+
+# Logs e saída de execução
+crash.log
+terraform.tfplan
+*.log
+
+# Arquivos de lock
+.terraform.lock.hcl
+
+# Credenciais temporárias
+.aws/
