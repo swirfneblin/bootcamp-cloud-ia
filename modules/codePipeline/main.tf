@@ -48,7 +48,7 @@ resource "aws_codepipeline" "codepipeline" {
 
       configuration = {
         Owner      = var.github_owner
-        Repo       = "cloudsmart-frontend"
+        Repo       = "cloudmart-frontend"
         Branch     = "main"
         OAuthToken = var.github_token
       }
