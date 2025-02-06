@@ -20,3 +20,8 @@ terraform.tfplan
 .aws/
 
 .env
+
+# generated files from template
+buildspecs/build.yaml
+kubernetes/deployment-frontend.yaml
+kubernetes/deployment-backend.yaml

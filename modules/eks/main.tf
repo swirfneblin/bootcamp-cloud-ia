@@ -1,7 +1,3 @@
-# provider "aws" {
-#   region = "us-east-1"
-# }
-
 resource "aws_iam_role" "eks_cluster_role" {
   name = "eks-cluster-role"
   
@@ -73,7 +69,7 @@ resource "aws_eks_node_group" "standard_workers" {
     max_size     = 2
   }
 
-  instance_types = ["t3.medium"]
+  instance_types = [var.eks_instance_type]
   
   depends_on = [
     aws_iam_role_policy_attachment.eks_worker_node_policy,

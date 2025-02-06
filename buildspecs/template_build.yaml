@@ -1,0 +1,26 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      docker: 20
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin <ECR_REPOSITORY>
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build -t cloudmart-frontend .
+      - docker tag cloudmart-frontend <ECR_REPOSITORY>:latest
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push <ECR_REPOSITORY>:latest
+      - ls -l
+
+artifacts:
+  files:
+    - cloudmart-frontend.yaml

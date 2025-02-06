@@ -1,6 +1,6 @@
 resource "aws_instance" "ec2_instance" {
-  ami                         = "ami-0c614dee691cbbf37"  
-  instance_type               = "t2.micro"
+  ami                         = var.instance_ami 
+  instance_type               = var.instance_type
   iam_instance_profile        = var.iam_instance_profile
   security_groups             = [var.sg_name]
   associate_public_ip_address = true

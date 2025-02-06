@@ -13,8 +13,5 @@ phases:
     commands:
       - aws eks update-kubeconfig --region us-east-1 --name cloudmart
       - kubectl get nodes
-      - ls
-      - IMAGE_URI=$(jq -r '.[0].imageUri' imagedefinitions.json)
-      - echo $IMAGE_URI
-      - sed -i "s|CONTAINER_IMAGE|$IMAGE_URI|g" cloudmart-frontend.yaml
-      - kubectl apply -f cloudmart-frontend.yaml
+      # - kubectl apply -f deployment-backend.yaml
+      - kubectl apply -f deployment-frontend.yaml

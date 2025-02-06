@@ -15,7 +15,7 @@ spec:
       serviceAccountName: cloudmart-pod-execution-role
       containers:
         - name: cloudmart-backend-app
-          image: public.ecr.aws/l4c0j8h9/cloudmart-backend:latest
+          image: <ECR_REPOSITORY>/cloudmart-backend:latest
           env:
             - name: PORT
               value: "5000"
@@ -29,3 +29,16 @@ spec:
               value: "xxxxxx"
             - name: OPENAI_ASSISTANT_ID
               value: "xxxx"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloudmart-backend-app-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: cloudmart-backend-app
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
