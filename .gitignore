@@ -18,3 +18,5 @@ terraform.tfplan
 
 # Credenciais temporárias
 .aws/
+
+.env
