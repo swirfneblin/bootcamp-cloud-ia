@@ -23,3 +23,11 @@ module "s3" {
 module "dynamoDb" {
   source = "./modules/dynamoDb"
 }
+
+module "eks" {
+  source = "./modules/eks"
+}
+
+module "ecr" {
+  source = "./modules/ecr"
+}
