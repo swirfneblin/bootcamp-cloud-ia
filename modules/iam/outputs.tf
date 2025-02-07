@@ -9,3 +9,7 @@ output "codepipeline_role_arn" {
 output "codebuild_role_arn" {
   value = aws_iam_role.codebuild_role.arn
 }
+
+output "deploy_role_arn" {
+  value = aws_iam_role.codebuild_deploy_role.arn
+}

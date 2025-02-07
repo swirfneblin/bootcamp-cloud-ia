@@ -22,14 +22,14 @@ module "s3" {
   source = "./modules/s3"
 }
 
-# module "dynamoDb" {
-#   source = "./modules/dynamoDb"
-# }
+module "dynamoDb" {
+  source = "./modules/dynamoDb"
+}
 
-# module "eks" {
-#   source = "./modules/eks"
-#   eks_instance_type = var.eks_instance_type
-# }
+module "eks" {
+  source = "./modules/eks"
+  eks_instance_type = var.eks_instance_type
+}
 
 module "ecr" {
   source = "./modules/ecr"
@@ -43,6 +43,7 @@ module "codePipeline" {
   aws_secret_key = var.aws_secret_key
   codepipeline_role_arn = module.iam.codepipeline_role_arn
   codebuild_role_arn = module.iam.codebuild_role_arn
+  deploy_role_arn = module.iam.deploy_role_arn
   ecr_repository_url   = module.ecr.ecr_repository_url
   s3_bucket_codepipeline_bucket = module.s3.s3_bucket_codepipeline_bucket
 }

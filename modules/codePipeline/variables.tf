@@ -31,6 +31,12 @@ variable "codebuild_role_arn" {
   
 }
 
+variable "deploy_role_arn" {
+  description = "ARN da role de deploy"
+  type        = string
+  
+}
+
 variable "ecr_repository_url" {
   description = "URL do repositório ECR"
   type        = string

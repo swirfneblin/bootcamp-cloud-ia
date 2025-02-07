@@ -73,3 +73,50 @@ resource "aws_iam_role_policy_attachment" "codepipeline_policy" {
   role       = aws_iam_role.codepipeline_role.name
   policy_arn = "arn:aws:iam::aws:policy/AWSCodePipeline_FullAccess"
 }
+
+
+resource "aws_iam_role" "codebuild_deploy_role" {
+  name = "cloudmart_codebuild_deploy_role"
+  
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action    = "sts:AssumeRole"
+        Principal = {
+          Service = "codebuild.amazonaws.com"
+        }
+        Effect    = "Allow"
+        Sid       = ""
+      },
+    ]
+  })
+
+  inline_policy {
+    name = "CloudMartDeployPolicy"
+
+    policy = jsonencode({
+      Version = "2012-10-17"
+      Statement = [
+        {
+          Action = [
+            "eks:DescribeCluster",
+            "eks:UpdateKubeconfig",
+            "eks:ListClusters",
+            "eks:ListUpdates",
+            "eks:DescribeNodegroup",
+            "eks:ListNodegroups",
+            "ec2:DescribeInstances",
+            "ec2:DescribeSecurityGroups",
+            "ec2:DescribeSubnets"
+          ]
+          Resource = "*"
+          Effect   = "Allow"
+        },
+      ]
+    })
+  }
+
+}
+
+
