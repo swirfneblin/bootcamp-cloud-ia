@@ -8,15 +8,17 @@ module "iam" {
   s3_bucket_codepipeline_arn = module.s3.s3_bucket_codepipeline_arn
 }
 
-# module "sg" {
-#   source = "./modules/sg"
-# }
+module "sg" {
+  source = "./modules/sg"
+}
 
-# module "ec2" {
-#   source               = "./modules/ec2"
-#   iam_instance_profile = module.iam.iam_instance_profile
-#   sg_name = module.sg.sg_name
-# }
+module "ec2" {
+  source               = "./modules/ec2"
+  iam_instance_profile = module.iam.iam_instance_profile
+  sg_name = module.sg.sg_name
+  instance_ami = var.instance_ami
+  instance_type = var.instance_type
+}
 
 module "s3" {
   source = "./modules/s3"
